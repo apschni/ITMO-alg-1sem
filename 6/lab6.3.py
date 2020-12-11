@@ -6,19 +6,19 @@ def hash_function(self, value):
 
 
 class HashTable:
-    def __init__(self, size=100):
+    def __init__(self, size=245679):
         self.size = size
         self.table = [[] for _ in range(self.size)]
 
     def put(self, data):
         check = self.where(data[0])
-        hhh = self.hsh(data[0])
+        h = self.hsh(data[0])
         if check is not None:
-            self.table[hhh][check][1] = data[1]
-            return self.table[hhh][check], 0
+            self.table[h][check][1] = data[1]
+            return self.table[h][check], 0
         else:
-            self.table[hhh].append(data)
-            return self.table[hhh][-1], 1
+            self.table[h].append(data)
+            return self.table[h][-1], 1
 
     def where(self, data):
         index = self.hsh(data)
